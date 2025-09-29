@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections - GreenVision Premium Eyewear</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base styles and reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        :root {
+            --primary: #3cac24;
+            --primary-dark: #2f8a1c;
+            --dark: #222;
+            --light: #f8f8f8;
+            --gray: #777;
+            --light-gray: #eaeaea;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        /* Header and navigation */
+        header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            color: var(--primary);
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .logo span {
+            color: var(--dark);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary);
+        }
+        
+        .nav-icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-icons i {
+            font-size: 20px;
+            margin-left: 20px;
+            cursor: pointer;
+            color: var(--dark);
+            transition: color 0.3s;
+        }
+        
+        .nav-icons i:hover {
+            color: var(--primary);
+        }
+        
+        /* Hamburger menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark);
+        }
+        
+        /* Mobile nav */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: white;
+            z-index: 2000;
+            padding: 80px 30px 30px;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+        }
+        
+        .mobile-nav ul li {
+            margin-bottom: 20px;
+        }
+        
+        .mobile-nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 18px;
+            font-weight: 500;
+            display: block;
+            padding: 10px 0;
+            transition: color 0.3s;
+        }
+        
+        .mobile-nav ul li a:hover, .mobile-nav ul li a.active {
+            color: var(--primary);
+        }
+        
+        .close-nav {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* Collection Banner */
+        .collection-banner {
+            height: 300px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .banner-content h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+        
+        .banner-content p {
+            font-size: 18px;
+            max-width: 700px;
+            margin-bottom: 25px;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 20px 5%;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .breadcrumb a {
+            color: var(--gray);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+        
+        .breadcrumb span {
+            color: var(--dark);
+            margin: 0 10px;
+        }
+        
+        /* Collection header */
+        .collection-header {
+            padding: 30px 5%;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .collection-title h1 {
+            font-size: 32px;
+            color: var(--dark);
+        }
+        
+        .collection-title p {
+            color: var(--gray);
+            margin-top: 5px;
+        }
+        
+        .collection-tools {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .sort-filter {
+            position: relative;
+        }
+        
+        .sort-btn, .filter-btn {
+            padding: 10px 15px;
+            background-color: var(--light);
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .sort-btn:hover, .filter-btn:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .sort-options {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            padding: 10px 0;
+            width: 200px;
+            z-index: 100;
+            display: none;
+        }
+        
+        .sort-options.active {
+            display: block;
+        }
+        
+        .sort-options a {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: var(--dark);
+        }
+        
+        .sort-options a:hover {
+            background-color: var(--light);
+            color: var(--primary);
+        }
+        
+        .search-box {
+            position: relative;
+        }
+        
+        .search-box input {
+            padding: 10px 15px 10px 40px;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            width: 250px;
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        /* Collection content */
+        .collection-content {
+            display: flex;
+            padding: 0 5% 50px;
+            gap: 30px;
+        }
+        
+        /* Filters sidebar */
+        .filters-sidebar {
+            width: 280px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: fit-content;
+        }
+        
+        .filter-group {
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--light-gray);
+            padding-bottom: 20px;
+        }
+        
+        .filter-group:last-child {
+            border-bottom: none;
+        }
+        
+        .filter-group h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .filter-group h3 span {
+            font-size: 14px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-option input {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .filter-option label {
+            cursor: pointer;
+        }
+        
+        .color-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .color-option {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .color-option.active {
+            border-color: var(--dark);
+        }
+        
+        .price-range {
+            padding: 0 5px;
+            width: 100%;
+        }
+        
+        .price-inputs {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        
+        .price-inputs input {
+            width: 45%;
+            padding: 8px;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+        }
+        
+        /* Products grid */
+        .products-grid {
+            flex: 1;
+        }
+        
+        .grid-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .grid-view {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .grid-view i {
+            font-size: 18px;
+            color: var(--gray);
+            cursor: pointer;
+        }
+        
+        .grid-view i.active {
+            color: var(--primary);
+        }
+        
+        .products-count {
+            color: var(--gray);
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .product {
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-img {
+            height: 250px;
+            background-color: var(--light-gray);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .product-info p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .price {
+            font-weight: 600;
+            font-size: 20px;
+            color: var(--primary);
+        }
+        
+        .add-to-cart {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+        
+        .pagination a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--dark);
+        }
+        
+        .pagination a.active, .pagination a:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* WhatsApp chat */
+        .whatsapp-chat {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+            z-index: 999;
+            transition: transform 0.3s;
+        }
+        
+        .whatsapp-chat:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 5% 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* Mobile filter button */
+        .mobile-filter-btn {
+            display: none;
+            padding: 12px 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 20px auto;
+            font-weight: 500;
+            width: calc(100% - 10%);
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 992px) {
+            nav ul {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .collection-content {
+                flex-direction: column;
+            }
+            
+            .filters-sidebar {
+                width: 100%;
+                display: none;
+            }
+            
+            .filters-sidebar.active {
+                display: block;
+            }
+            
+            .search-box input {
+                width: 200px;
+            }
+            
+            .mobile-filter-btn {
+                display: block;
+            }
+            
+            .banner-content h1 {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .collection-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .collection-tools {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .search-box input {
+                width: 150px;
+            }
+            
+            .products {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .banner-content h1 {
+                font-size: 32px;
+            }
+            
+            .banner-content p {
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo h1 {
+                font-size: 24px;
+            }
+            
+            .collection-title h1 {
+                font-size: 26px;
+            }
+            
+            .collection-tools {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .search-box {
+                width: 100%;
+            }
+            
+            .search-box input {
+                width: 100%;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .products {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-chat {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+            
+            .banner-content h1 {
+                font-size: 28px;
+            }
+            
+            .collection-banner {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>Green<span>Vision</span></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="#" class="active">Collections</a></li>
+                <li><a href="#">Men</a></li>
+                <li><a href="#">Women</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-icons">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-shopping-cart"></i>
+            <i class="fas fa-user"></i>
+        </div>
+        <button class="hamburger">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <button class="close-nav">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="#" class="active">Collections</a></li>
+            <li><a href="#">Men</a></li>
+            <li><a href="#">Women</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Collection Banner -->
+    <div class="collection-banner">
+        <div class="banner-content">
+            <h1>Premium Eyewear Collection</h1>
+            <p>Discover our handcrafted glasses designed for perfect vision and unmatched style. Find your perfect pair from our extensive collection.</p>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="home.html">Home</a> <span>/</span> <a href="#">Collections</a>
+    </div>
+
+    <!-- Collection Header -->
+    <div class="collection-header">
+        <div class="collection-title">
+            <h1>Premium Eyewear Collection</h1>
+            <p>Discover our handcrafted glasses with perfect vision and style</p>
+        </div>
+        <div class="collection-tools">
+            <div class="sort-filter">
+                <button class="sort-btn">
+                    Sort by <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="sort-options">
+                    <a href="#">Price: Low to High</a>
+                    <a href="#">Price: High to Low</a>
+                    <a href="#">Most Popular</a>
+                    <a href="#">Newest First</a>
+                    <a href="#">Customer Reviews</a>
+                </div>
+            </div>
+            <button class="filter-btn">
+                <i class="fas fa-filter"></i> Filters
+            </button>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search products...">
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Filter Button -->
+    <button class="mobile-filter-btn">
+        <i class="fas fa-filter"></i> Show Filters
+    </button>
+
+    <!-- Collection Content -->
+    <div class="collection-content">
+        <!-- Filters Sidebar -->
+        <div class="filters-sidebar">
+            <div class="filter-group">
+                <h3>Categories <span>Clear</span></h3>
+                <div class="filter-options">
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat1" checked>
+                        <label for="cat1">Eyeglasses</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat2">
+                        <label for="cat2">Sunglasses</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat3">
+                        <label for="cat3">Reading Glasses</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat4">
+                        <label for="cat4">Contact Lenses</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <h3>Price Range <span>Clear</span></h3>
+                <input type="range" class="price-range" min="0" max="500" value="250">
+                <div class="price-inputs">
+                    <input type="number" placeholder="Min" value="0">
+                    <input type="number" placeholder="Max" value="500">
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <h3>Frame Color <span>Clear</span></h3>
+                <div class="color-options">
+                    <div class="color-option active" style="background-color: #1a1a1a;"></div>
+                    <div class="color-option" style="background-color: #814c2a;"></div>
+                    <div class="color-option" style="background-color: #c0c0c0;"></div>
+                    <div class="color-option" style="background-color: #ffd700;"></div>
+                    <div class="color-option" style="background-color: #e62e5f;"></div>
+                    <div class="color-option" style="background-color: #0d5dad;"></div>
+                    <div class="color-option" style="background-color: #3cac24;"></div>
+                    <div class="color-option" style="background-color: #7b3fa4;"></div>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <h3>Frame Material <span>Clear</span></h3>
+                <div class="filter-options">
+                    <div class="filter-option">
+                        <input type="checkbox" id="mat1">
+                        <label for="mat1">Acetate</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="mat2" checked>
+                        <label for="mat2">Metal</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="mat3">
+                        <label for="mat3">Titanium</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="mat4">
+                        <label for="mat4">Plastic</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <h3>Brand <span>Clear</span></h3>
+                <div class="filter-options">
+                    <div class="filter-option">
+                        <input type="checkbox" id="brand1" checked>
+                        <label for="brand1">GreenVision</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="brand2">
+                        <label for="brand2">Ray-Ban</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="brand3">
+                        <label for="brand3">Oakley</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="brand4">
+                        <label for="brand4">Gucci</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Products Grid -->
+        <div class="products-grid" id="products">
+            <div class="grid-options">
+                <div class="products-count">Showing 12 of 48 products</div>
+                <div class="grid-view">
+                    <i class="fas fa-th-large active"></i>
+                    <i class="fas fa-list"></i>
+                </div>
+            </div>
+            
+            <div class="products">
+                <!-- Product 1 -->
+                <div class="product">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Classic Aviator</h3>
+                        <p>Premium metal frame with UV protection</p>
+                        <div class="product-price">
+                            <div class="price">₹129.99</div>
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Urban Round</h3>
+                        <p>Vintage-inspired acetate frames</p>
+                        <div class="product-price">
+                            <div class="price">₹159.99</div>
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1591076482161-42ce6ba69f9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Sport Performance</h3>
+                        <p>Lightweight and durable for active lifestyle</p>
+                        <div class="product-price">
+                            <div class="price">₹199.99</div>
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Designer Cat Eye</h3>
+                        <p>Elegant feminine frames with floral details</p>
+                        <div class="product-price">
+                            <div class="price">₹179.99</div>
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Business Classic</h3>
+                        <p>Professional look with titanium frame</p>
+                        <div class="product-price">
+                            <div class="price">₹219.99</div>
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1581338834647-b0fb40704e21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Polarized Sunglasses</h3>
+                        <p>100% UV protection with polarized lenses</p>
+                        <div class="product-price">
+                            <div class="price">₹149.99</div>
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 7 -->
+                <div class="product">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1507680434567-5739c80be1ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Retro Square</h3>
+                        <p>Nostalgic design with modern comfort</p>
+                        <div class="product-price">
+                            <div class="price">₹139.99</div>
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 8 -->
+                <div class="product">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1598284636627-291a91bd42e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Ultra Light Flex</h3>
+                        <p>Flexible frames with memory metal</p>
+                        <div class="product-price">
+                            <div class="price">₹189.99</div>
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Chat -->
+    <a href="#" class="whatsapp-chat">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>GreenVision</h3>
+                <p>Premium eyewear for every vision. We provide high-quality glasses with perfect style and comfort.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="#">Home</a>
+                <a href="#">Collections</a>
+                <a href="#">Men's Glasses</a>
+                <a href="#">Women's Glasses</a>
+                <a href="#">About Us</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Customer Service</h3>
+                <a href="#">Contact Us</a>
+                <a href="#">FAQs</a>
+                <a href="#">Shipping & Returns</a>
+                <a href="#">Track Order</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Vision Street, Optic City</p>
+                <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> info@greenvision.com</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 GreenVision. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const closeNav = document.querySelector('.close-nav');
+        const mobileNav = document.querySelector('.mobile-nav');
+        
+        hamburger.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeNav.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Sort Options
+        const sortBtn = document.querySelector('.sort-btn');
+        const sortOptions = document.querySelector('.sort-options');
+        
+        sortBtn.addEventListener('click', () => {
+            sortOptions.classList.toggle('active');
+        });
+        
+        // Close sort options when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!sortBtn.contains(e.target) && !sortOptions.contains(e.target)) {
+                sortOptions.classList.remove('active');
+            }
+        });
+        
+        // Color Options
+        const colorOptions = document.querySelectorAll('.color-option');
+        
+        colorOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                colorOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+            });
+        });
+        
+        // Grid View Toggle
+        const gridViewIcons = document.querySelectorAll('.grid-view i');
+        
+        gridViewIcons.forEach(icon => {
+            icon.addEventListener('click', () => {
+                gridViewIcons.forEach(i => i.classList.remove('active'));
+                icon.classList.add('active');
+            });
+        });
+        
+        // Mobile Filter Toggle
+        const mobileFilterBtn = document.querySelector('.mobile-filter-btn');
+        const filtersSidebar = document.querySelector('.filters-sidebar');
+        
+        mobileFilterBtn.addEventListener('click', () => {
+            filtersSidebar.classList.toggle('active');
+            
+            if (filtersSidebar.classList.contains('active')) {
+                mobileFilterBtn.innerHTML = '<i class="fas fa-times"></i> Hide Filters';
+            } else {
+                mobileFilterBtn.innerHTML = '<i class="fas fa-filter"></i> Show Filters';
+            }
+        });
+        
+        // Filter Group Accordion
+        const filterGroupHeaders = document.querySelectorAll('.filter-group h3');
+        
+        filterGroupHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const options = header.nextElementSibling;
+                options.style.display = options.style.display === 'none' ? 'flex' : 'none';
+            });
+        });
+        
+        // Initialize filter options to be visible on desktop, hidden on mobile
+        window.addEventListener('load', () => {
+            if (window.innerWidth <= 992) {
+                const allFilterOptions = document.querySelectorAll('.filter-options, .color-options, .price-range, .price-inputs');
+                allFilterOptions.forEach(options => {
+                    options.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
