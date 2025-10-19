@@ -159,43 +159,154 @@
             color: var(--dark);
         }
         
-        /* Hero section with slider */
-        .hero {
-            height: 100vh;
-            width: 100%;
+        /* Sale Banner Section */
+        .sale-banner {
+            margin-top: 80px;
+            height: 150px;
+            background: linear-gradient(135deg, #3cac24, #2f8a1c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
             position: relative;
             overflow: hidden;
         }
         
-        .slide {
+        .sale-content {
+            max-width: 1000px;
+            z-index: 2;
+        }
+        
+        .sale-content h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .sale-content p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .sale-badge {
+            display: inline-block;
+            background-color: #ff4d4d;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .sale-banner::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease;
+            background: url('https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+        
+        /* Categories Section */
+        .categories {
+            padding: 60px 5%;
+            background-color: white;
+        }
+        
+        .categories-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .category {
+            position: relative;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .category-img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s;
+        }
+        
+        .category:hover .category-img {
+            transform: scale(1.05);
+        }
+        
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+        }
+        
+        .category-overlay h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 500px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
             padding: 0 10%;
-        }
-        
-        .slide.active {
-            opacity: 1;
-        }
-        
-        .slide-1 {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
-        }
-        
-        .slide-2 {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
-        }
-        
-        .slide-3 {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1591076482161-42ce6ba69f9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
         }
         
         .hero-content {
@@ -213,43 +324,9 @@
             margin-bottom: 30px;
         }
         
-        .btn {
-            display: inline-block;
+        .btn-large {
             padding: 12px 30px;
-            background-color: var(--primary);
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
             font-size: 16px;
-            transition: background-color 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background-color: var(--primary-dark);
-        }
-        
-        .slider-dots {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-        }
-        
-        .dot {
-            width: 12px;
-            height: 12px;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .dot.active {
-            background-color: white;
         }
         
         /* Section styling */
@@ -574,6 +651,36 @@
                 padding: 10px 20px;
             }
             
+            .sale-banner {
+                height: 120px;
+            }
+            
+            .sale-content h2 {
+                font-size: 24px;
+            }
+            
+            .sale-content p {
+                font-size: 14px;
+            }
+            
+            .sale-badge {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+            
+            .categories-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .category {
+                height: 150px;
+            }
+            
+            .category-overlay h3 {
+                font-size: 16px;
+            }
+            
             .whatsapp-chat {
                 bottom: 20px;
                 right: 20px;
@@ -592,17 +699,17 @@
         </div>
         <nav>
             <ul>
-                <li><a href="home">Home</a></li>
-                <li><a href="collections">Collections</a></li>
-                <li><a href="men">Men</a></li>
-                <li><a href="women">Women</a></li>
-                <li><a href="about">About</a></li>
-                <li><a href="contact">Contact</a></li>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="collections.html">Collections</a></li>
+                <li><a href="men.html">Men</a></li>
+                <li><a href="women.html">Women</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
         <div class="nav-icons">
             <i class="fas fa-search"></i>
-            <a href="cart"><i class="fas fa-shopping-cart"></i></a>
+            <i class="fas fa-shopping-cart"></i>
             <i class="fas fa-user"></i>
         </div>
         <button class="hamburger">
@@ -616,42 +723,67 @@
             <i class="fas fa-times"></i>
         </button>
         <ul>
-            <li><a href="home">Home</a></li>
-            <li><a href="collections">Collections</a></li>
-            <li><a href="men">Men</a></li>
-            <li><a href="women">Women</a></li>
-            <li><a href="about">About</a></li>
-            <li><a href="contact">Contact</a></li>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="men.html">Men</a></li>
+            <li><a href="women.html">Women</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
 
-    <!-- Hero Section with Slider -->
+    <!-- Sale Banner Section -->
+    <section class="sale-banner">
+        <div class="sale-content">
+            <div class="sale-badge">LIMITED TIME OFFER</div>
+            <h2>SUMMER SALE UP TO 50% OFF</h2>
+            <p>Get premium eyewear at unbeatable prices. Don't miss out!</p>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="section-title">
+            <h2>Shop By Category</h2>
+        </div>
+        <div class="categories-container">
+            <div class="category">
+                <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80');"></div>
+                <div class="category-overlay">
+                    <h3>Eye glasses</h3>
+                    <button class="btn btn-outline">Shop Now</button>
+                </div>
+            </div>
+            <div class="category">
+                <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1591076482161-42ce6ba69f9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                <div class="category-overlay">
+                    <h3>Computer glass</h3>
+                    <button class="btn btn-outline">Shop Now</button>
+                </div>
+            </div>
+            <div class="category">
+                <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80');"></div>
+                <div class="category-overlay">
+                    <h3>Sunglasses</h3>
+                    <button class="btn btn-outline">Shop Now</button>
+                </div>
+            </div>
+            <div class="category">
+                <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80');"></div>
+                <div class="category-overlay">
+                    <h3>Accessories</h3>
+                    <button class="btn btn-outline">Shop Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="slide slide-1 active">
-            <div class="hero-content">
-                <h2>Discover Perfect Vision in Style</h2>
-                <p>Explore our premium collection of eyewear designed for comfort, durability, and unmatched style.</p>
-                <a href="#" class="btn">Shop Now</a>
-            </div>
-        </div>
-        <div class="slide slide-2">
-            <div class="hero-content">
-                <h2>New Summer Collection</h2>
-                <p>Stay cool and protected with our latest summer eyewear collection. Up to 40% off on selected items.</p>
-                <a href="#" class="btn">Explore Collection</a>
-            </div>
-        </div>
-        <div class="slide slide-3">
-            <div class="hero-content">
-                <h2>Prescription Lenses Made Easy</h2>
-                <p>Get the perfect prescription lenses with our advanced technology and expert optometrists.</p>
-                <a href="#" class="btn">Book an Eye Test</a>
-            </div>
-        </div>
-        <div class="slider-dots">
-            <div class="dot active" data-slide="0"></div>
-            <div class="dot" data-slide="1"></div>
-            <div class="dot" data-slide="2"></div>
+        <div class="hero-content">
+            <h2>Discover Perfect Vision in Style</h2>
+            <p>Explore our premium collection of eyewear designed for comfort, durability, and unmatched style.</p>
+            <button class="btn btn-large">Shop Now</button>
         </div>
     </section>
 
@@ -668,7 +800,7 @@
                     <p>Timeless design with modern UV protection technology.</p>
                     <div class="product-price">
                         <span class="price">₹129.99</span>
-                        <a href="#" class="btn">Add to Cart</a>
+                        <button class="btn">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -679,7 +811,7 @@
                     <p>Lightweight and durable frames for everyday use.</p>
                     <div class="product-price">
                         <span class="price">₹159.99</span>
-                        <a href="#" class="btn">Add to Cart</a>
+                        <button class="btn">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -690,7 +822,7 @@
                     <p>Elegant frames for those who appreciate luxury.</p>
                     <div class="product-price">
                         <span class="price">₹219.99</span>
-                        <a href="#" class="btn">Add to Cart</a>
+                        <button class="btn">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -701,7 +833,7 @@
                     <p>Perfect for athletes and active lifestyles.</p>
                     <div class="product-price">
                         <span class="price">₹189.99</span>
-                        <a href="#" class="btn">Add to Cart</a>
+                        <button class="btn">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -721,7 +853,7 @@
                     <p>Retro style with contemporary comfort.</p>
                     <div class="product-price">
                         <span class="price">₹139.99</span>
-                        <a href="#" class="btn">Add to Cart</a>
+                        <button class="btn">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -732,7 +864,7 @@
                     <p>Ultra-lightweight and corrosion-resistant.</p>
                     <div class="product-price">
                         <span class="price">₹199.99</span>
-                        <a href="#" class="btn">Add to Cart</a>
+                        <button class="btn">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -743,7 +875,7 @@
                     <p>Iconic round frames for a distinctive look.</p>
                     <div class="product-price">
                         <span class="price">₹149.99</span>
-                        <a href="#" class="btn">Add to Cart</a>
+                        <button class="btn">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -754,7 +886,7 @@
                     <p>Feminine and fashionable frames.</p>
                     <div class="product-price">
                         <span class="price">₹169.99</span>
-                        <a href="#" class="btn">Add to Cart</a>
+                        <button class="btn">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -797,7 +929,7 @@
         </div>
         <div class="survey-content">
             <p>Not sure which glasses suit you best? Take our short survey and we'll recommend the perfect frames and lenses based on your face shape, lifestyle, and vision needs.</p>
-            <a href="#" class="btn">Take The Survey</a>
+            <button class="btn">Take The Survey</button>
         </div>
     </section>
 
@@ -807,7 +939,7 @@
         <h3>Find Your Perfect Lenses</h3>
         <p>Taking care of your vision is important. Our short survey will help us recommend the best lenses for your specific needs - whether you're looking for blue light protection, progressive lenses, or specialized coatings.</p>
         <p>Let us guide you to the perfect solution for your eyewear needs.</p>
-        <a href="#" class="btn">Take Me to the Survey</a>
+        <button class="btn">Take Me to the Survey</button>
     </div>
     <div class="overlay"></div>
 
@@ -858,43 +990,6 @@
     </footer>
 
     <script>
-        // Hero Slider Functionality
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        let currentSlide = 0;
-        let slideInterval;
-
-        function showSlide(n) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            currentSlide = (n + slides.length) % slides.length;
-            
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
-        }
-
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
-
-        // Set up automatic sliding
-        function startSlider() {
-            slideInterval = setInterval(nextSlide, 5000);
-        }
-
-        // Initialize slider
-        startSlider();
-
-        // Add click events to dots
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                clearInterval(slideInterval);
-                showSlide(index);
-                startSlider();
-            });
-        });
-
         // Mobile Navigation
         const hamburger = document.querySelector('.hamburger');
         const mobileNav = document.querySelector('.mobile-nav');
